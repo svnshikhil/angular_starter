@@ -1,0 +1,13 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+    <div>Login</div>
+    <div>
+        <input type="text" class="form-control" name="username" [(ngModel)]='model.username' required />
+    </div>
+    <div>
+        <input type="password" class="form-control" name="password" [(ngModel)]='model.password' required />
+    </div>
+    <div>
+        <button (click)="onSubmit();">Login</button>
+    </div>
+</div>
