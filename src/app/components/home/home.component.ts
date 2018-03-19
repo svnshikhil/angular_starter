@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserServiceService } from '../../services/user-service.service'
 @Component({
@@ -13,10 +13,15 @@ export class HomeComponent implements OnInit {
   ) { }
   title = "App"
   route = this.router
+  loading = false
   data: Object = []
+  test() {
+    alert()
+  }
   ngOnInit() {
     this.userService.listUser().subscribe(
       (response) => {
+        this.loading = !this.loading
         var resp = response.json()
         this.data = resp.data
       },

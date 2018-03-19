@@ -11,6 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 
 import { LoginServiceService } from './services/login-service.service';
 import { UserServiceService } from './services/user-service.service';
+import { SettingsComponent } from './components/settings/settings.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { UserServiceService } from './services/user-service.service';
     AppComponent,
     LoginComponent,
     MyNewPipePipe,
-    HomeComponent
+    HomeComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
