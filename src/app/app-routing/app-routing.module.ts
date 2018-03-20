@@ -4,13 +4,20 @@ import { RouterModule, Routes, Router, ActivatedRoute, Params } from '@angular/r
 import { LoginComponent } from '../components/login/login.component';
 import { HomeComponent } from '../components/home/home.component';
 import { SignupComponent } from '../components/signup/signup.component';
+import { FullComponent } from '../containers/full/full.component';
 
 
 const routes: Routes = [
-    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: '', redirectTo: '/dashboard/home', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
-    { path: 'home', component: HomeComponent },
     { path: 'signup', component: SignupComponent },
+    {
+        path: 'dashboard',
+        component: FullComponent,
+        children: [
+            { path: 'home', component: HomeComponent }
+        ]
+    },
 ];
 
 @NgModule({

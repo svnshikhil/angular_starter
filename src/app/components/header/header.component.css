@@ -1,0 +1,11 @@
+
+.fixedheader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: #CCC;
+  background: #000;
+  padding: 20px;
+}
+

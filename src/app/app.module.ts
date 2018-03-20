@@ -16,6 +16,9 @@ import { SettingsComponent } from './components/settings/settings.component';
 // Services
 import { LoginService } from "./services/login.service";
 import { SignupComponent } from './components/signup/signup.component';
+import { FullComponent } from './containers/full/full.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { SignupComponent } from './components/signup/signup.component';
     MyNewPipePipe,
     HomeComponent,
     SettingsComponent,
-    SignupComponent
+    SignupComponent,
+    FullComponent,
+    SidebarComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
