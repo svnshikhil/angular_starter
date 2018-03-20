@@ -37,7 +37,7 @@ export class LoginComponent {
                     var resp = response.json()
                     if (resp.token) {
                         window.localStorage.setItem("token", resp.token);
-                        this.router.navigateByUrl('/home');
+                        this.router.navigateByUrl('/');
                     } else {
                         console.log("error", resp)
                     }

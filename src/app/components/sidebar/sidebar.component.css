@@ -23,7 +23,7 @@ body {
 #sidebar-wrapper {
   z-index: 1000;
   position: fixed;
- /*  left: 250px; */
+  /*  left: 250px; */
   width: 250px;
   height: 100%;
   /* margin-left: -250px; */
@@ -84,17 +84,18 @@ body {
 }
 
 .sidebar-nav > .sidebar-brand {
-  height: 65px;
+  height: 53px;
   font-size: 18px;
   line-height: 60px;
+  background: #3288BC;
 }
 
 .sidebar-nav > .sidebar-brand a {
-  color: #999999;
+  color: black;
 }
 
 .sidebar-nav > .sidebar-brand a:hover {
-  color: #fff;
+  color: black;
   background: none;
 }
 @media(min-width:768px) {

@@ -6,19 +6,24 @@ import { ReactiveFormsModule } from '@angular/forms';
 // Main module
 import { AppComponent } from './app.component';
 // Components
-
-import { LoginComponent } from './components/login/login.component';
-import { AppRoutingModule } from '../app/app-routing/app-routing.module';
-import { MyNewPipePipe } from './pipes/my-new-pipe.pipe';
-import { HomeComponent } from './components/home/home.component';
-import { SettingsComponent } from './components/settings/settings.component';
-
-// Services
-import { LoginService } from "./services/login.service";
 import { SignupComponent } from './components/signup/signup.component';
 import { FullComponent } from './containers/full/full.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HeaderComponent } from './components/header/header.component';
+
+import { LoginComponent } from './components/login/login.component';
+import { AppRoutingModule } from '../app/app-routing/app-routing.module';
+import { HomeComponent } from './components/home/home.component';
+import { SettingsComponent } from './components/settings/settings.component';
+
+import { MyNewPipePipe } from './pipes/my-new-pipe.pipe';
+// Services
+import { LoginService } from "./services/login.service";
+import { UserService } from "./services/user.service";
+
+
+// Guard
+import { LoginGuardGuard } from "./guard/login-guard.guard";
 
 @NgModule({
   declarations: [
@@ -41,7 +46,9 @@ import { HeaderComponent } from './components/header/header.component';
   ],
   schemas: [NO_ERRORS_SCHEMA],
   providers: [
-    LoginService
+    LoginService,
+    LoginGuardGuard,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
