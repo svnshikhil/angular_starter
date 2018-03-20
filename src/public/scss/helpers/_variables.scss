@@ -1,0 +1,27 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900);
+$font-stack: 'Lato',
+sans-serif;
+$font-thin:100;
+$font-light:300;
+$font-normal:400;
+$font-bold: 700;
+$font-black: 900;
+
+/*---------primary variable-----------*/
+$text-color: #616161;
+$black-color: #000000;
+$white-color: #ffffff;
+$form-border:#979797;
+$gray-color:#f2f2f2;
+$theam-blue:#1e88e5;
+$aside:#263238;
+
+
+
+/*---------/.Events-----------*/
+
+$smartphone: 480px;
+$tabletPortrait: 767px;
+$tabletLandscape: 1024px;
+$desktop: 1174px;
+$largeScreen: 1400px;

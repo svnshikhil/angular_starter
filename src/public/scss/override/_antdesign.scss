@@ -1,0 +1,261 @@
+.ant-input {
+    padding: 0px 10px;
+    height: auto;
+    height: 44px;
+    border: $form-border solid 1px;
+    @include box-sizing(border-box);
+    @include transition(all .3s ease);
+    @include box-shadow(none);
+    @include border-radius(8px);
+    line-height: 44px;
+    &:focus,
+    &:hover {
+        box-shadow: none;
+        border-color: $primary-color;
+        @include transition(all .3s ease);
+    }
+}
+
+.ant-calendar-picker:hover .ant-calendar-picker-input:not([disabled]) {
+    box-shadow: none;
+    border-color: $primary-color;
+    @include transition(all .3s ease);
+}
+
+.ant-calendar-picker {
+    height: 44px;
+    line-height: 44px;
+    &:hover {
+        box-shadow: none;
+        border-color: $primary-color;
+        @include transition(all .3s ease);
+    }
+    .ant-calendar-picker-icon {
+        width: 20px;
+        height: 20px;
+        margin-top: -8px;
+        &:after {
+            font-size: 18px;
+        }
+    }
+    .ant-calendar-picker-clear {
+        width: 20px;
+        height: 20px;
+        font-size: 18px;
+        margin-top: -8px;
+    }
+}
+
+.ant-calendar-selected-day {
+    margin: 0;
+    .ant-calendar-date {
+        background: $primary-color;
+        &:hover {
+            background: $primary-color;
+        }
+    }
+}
+
+.edit-list {
+    margin: 0;
+    .ant-input {
+        height: 24px;
+        line-height: 22px;
+    }
+    .ant-calendar-picker {
+        height: 24px;
+        line-height: 22px;
+        .ant-calendar-picker-clear {
+            top: 11px;
+        }
+        .ant-calendar-picker-icon {
+            top: 11px;
+        }
+    }
+}
+
+.ant-spin-dot i {
+    background-color: $primary-color;
+}
+
+.ant-spin {
+    color: $primary-color;
+}
+
+.setting-content {
+    margin: 0;
+    .ant-select {
+        width: 100%;
+        .ant-select-selection {
+            border: $form-border solid 1px;
+            @include box-sizing(border-box);
+            @include transition(all .3s ease);
+            @include box-shadow(none);
+            @include border-radius(8px);
+            &:hover {
+                border: $primary-color solid 1px;
+            }
+        }
+        .ant-select-selection--single {
+            height: auto;
+            .ant-select-selection__rendered {
+                line-height: 42px;
+            }
+            .ant-select-arrow {
+                font-size: 23px;
+                margin-top: -11px;
+            }
+        }
+    }
+}
+
+.ant-select-dropdown-menu {
+    @include box-shadow(0px 0px 4px 2px rgba(0, 0, 0, 0.04));
+    .ant-select-dropdown-menu-item {
+        font-size: 14px;
+        padding: 10px;
+        &:hover,
+        &.active {
+            background-color: $light-green;
+            color: $text-color;
+        }
+    }
+}
+
+.ant-radio-group {
+    .ant-radio-button-wrapper {
+        height: auto;
+        line-height: 36px;
+        &:hover {
+            color: $black-color;
+            position: relative;
+        }
+    }
+    .ant-radio-button-wrapper-checked {
+        background: $primary-color;
+        border-color: $primary-color;
+        color: $white-color;
+        z-index: 1;
+        &:before {
+            background-color: $primary-color!important;
+            opacity: 0;
+        }
+        &:first-child {
+            border-color: $primary-color;
+        }
+        &:hover {
+            color: $white-color !important;
+        }
+    }
+}
+
+.ap-input-icon {
+    margin: 0;
+    svg {
+        right: -8px;
+    }
+}
+
+.ant-time-picker-large {
+    margin: 0;
+    .ant-time-picker-input {
+        height: auto;
+        line-height: 42px;
+        padding: 0px 10px;
+        border: $form-border solid 1px;
+        @include box-sizing(border-box);
+        @include transition(all .3s ease);
+        @include box-shadow(none);
+        @include border-radius(8px);
+        &:hover {
+            border: $primary-color solid 1px;
+        }
+        .ant-calendar-picker-clear {
+            top: 11px;
+        }
+        .ant-calendar-picker-icon {
+            top: 11px;
+        }
+    }
+    .ant-time-picker-icon {
+        width: 20px;
+        height: 20px;
+        margin-top: -10px;
+        &:after {
+            font-size: 18px;
+        }
+    }
+}
+
+.ant-btn-primary {
+    background-color: $primary-color;
+}
+
+.ant-btn-primary:hover {
+    background-color: $primary-color;
+}
+
+.ant-calendar-range-picker-separator {
+    line-height: 41px;
+}
+
+.ant-collapse-content {
+    background: $white-color !important;
+    border: solid 1px $gray-color;
+}
+
+.ant-radio-wrapper {
+    margin-right: 10px;
+    span{
+        margin: 0;
+        padding: 0px;
+        display: inline-block;
+        vertical-align: middle;
+        &:last-child{
+            padding-left: 4px;
+
+        }
+    }
+    .ant-radio {
+        .ant-radio-inner {
+            border: $form-border solid 1px;
+            &:hover {
+                border-color: $primary-color;
+            }
+        }
+        &.ant-radio-checked {
+            margin: 0;
+            .ant-radio-inner {
+                border-color: $primary-color;
+                &:after {
+                    background: $primary-color;
+                }
+            }
+        }
+    }
+}
+
+.ant-select-selection {
+    height: auto;
+    border: $form-border solid 1px;
+    @include box-sizing(border-box);
+    @include transition(all .3s ease);
+    @include box-shadow(none);
+    @include border-radius(8px);
+    line-height: 42px;
+    .ant-select-selection__rendered {
+        line-height: 42px;
+    }
+    .ant-select-arrow {
+        font-size: 20px !important;
+        margin-top: -8px;
+    }
+}
+.ant-modal-close-x{
+    font-size:22px;
+    color:$primary-color;
+    line-height: 61px;    
+}
+.ant-modal-title{
+    padding: 4px;
+}

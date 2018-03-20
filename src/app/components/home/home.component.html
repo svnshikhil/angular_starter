@@ -7,24 +7,4 @@
     Welcome to {{ title}}!
   </h1>
   <app-settings (onClickHome)="test()"></app-settings>
-  <div *ngIf='loading' class="table-responsive" style="margin:100px">
-    <table class="table table-striped table-bordered">
-      <thead>
-        <tr>
-          <th>Image</th>
-          <th>Firstname</th>
-          <th>Lastname</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let person of data; let i = index">
-          <td>
-            <img width="150" alt="Angular Logo" src='{{person.avatar}}'>
-          </td>
-          <td>{{ person.first_name }}</td>
-          <td>{{ person.last_name}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
 </div>

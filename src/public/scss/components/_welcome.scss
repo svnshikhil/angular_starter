@@ -1,0 +1,145 @@
+.pointer-class {
+  cursor: pointer;
+}
+
+.validation-error {
+  font-size: 10px;
+  display: flex;
+  float: right;
+  color: RED;
+}
+
+.input-error {
+  font-size: 10px;
+  display: flex;
+  float: right;
+  color: RED;
+}
+
+.input-validator .sk-circle {
+  margin: 8px;
+  width: 20px;
+  height: 20px;
+  position: relative;
+}
+
+.signup-wrapper .form-control {
+  width: 80% !important;
+}
+
+.floating-add {
+  border-radius: 30px;
+  cursor: pointer;
+  background: #1890ff;
+  color: #fff;
+  margin: 0;
+  top: auto;
+  right: 30px;
+  bottom: 60px;
+  left: auto;
+  position: fixed;
+  z-index: 1;
+  @include border-radius(50%);
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.form-wrapper {
+  max-width: 700px;
+  width: 100%;
+  margin: 20px auto 0;
+
+  .add-btn-pan {
+    display: block;
+    padding-top: 28px;
+
+    .btn-sm {
+      line-height: 32px;
+    }
+  }
+}
+
+.card-header {
+  .btn label {
+    display: flex;
+    float: right;
+  }
+}
+
+.header-inner {
+  @include flexbox();
+  @include justify-content(space-between);
+  @include align-items(center);
+  @include flex-direction(row);
+  @include flex-wrap(wrap);
+
+  .btn-outer {
+    flex: 0 0 auto;
+
+    .btn {
+      margin-right: 8px;
+    }
+  }
+}
+
+.pagination-wrap {
+  display: block;
+
+  .ant-pagination {
+    @include flexbox();
+    @include justify-content(flex-end);
+    @include align-items(center);
+    @include flex-direction(row);
+    @include flex-wrap(wrap);
+
+    li {
+      flex: 0 0 auto;
+
+      &:first-child {
+        margin-right: auto;
+      }
+    }
+  }
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.form-container {
+  display: block;
+  border-bottom: #ddd solid 1px;
+  padding: 1.25rem;
+
+  .card {
+    min-height: calc(100vh - 200px);
+  }
+
+  h1 {
+    font-weight: 700;
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  label {
+    margin-bottom: 6px;
+  }
+}
+
+.form-group-image {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  border: #ddd solid 1px;
+  margin-bottom: 10px;
+}
+
+.form-group {
+  label {
+    display: flex;
+    margin-bottom: 10px;
+  }
+}

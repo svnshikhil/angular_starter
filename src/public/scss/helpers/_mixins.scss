@@ -1,0 +1,338 @@
+@mixin clearfix() {
+    &::after,
+    &::before {
+        display: block;
+        content: "";
+        clear: both;
+    }
+}
+
+@mixin box-sizing($box-model) {
+    -webkit-box-sizing: $box-model;
+    -moz-box-sizing: $box-model;
+    box-sizing: $box-model;
+}
+
+@mixin border-radius($radius) {
+    border-radius: $radius;
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+}
+
+@mixin box-shadow($params) {
+    -webkit-box-shadow: $params;
+    -moz-box-shadow: $params;
+    box-shadow: $params;
+}
+
+
+/*=====
+alpha
+========*/
+
+@mixin alpha-bg($color, $background) {
+    $percent: alpha($color) * 100%;
+    $opaque: opacify($color, 1);
+    $solid-color: mix($opaque, $background, $percent);
+    background-color: $solid-color;
+    background-color: $color;
+}
+
+
+/*=====
+linear-gradien
+========*/
+
+@mixin linear-gradient($direction, $color-stops...) {
+    // Direction has been omitted and happens to be a color-stop
+    @if is-direction($direction)==false {
+        $color-stops: $direction, $color-stops;
+        $direction: 180deg;
+    }
+    background: nth(nth($color-stops, 1), 1);
+    background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
+    background: linear-gradient($direction, $color-stops);
+}
+
+
+/*=====
+radial-gradien
+========*/
+
+@mixin radial-gradient($start-colour, $start-position, $end-colour, $end-position) {
+    background: -moz-radial-gradient(center, ellipse cover, $start-colour $start-position, $end-colour $end-position);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, Colour-stop($start-position, $start-colour), Colour-stop($end-position, $end-colour));
+    background: -webkit-radial-gradient(center, ellipse cover, $start-colour $start-position, $end-colour $end-position);
+    background: -o-radial-gradient(center, ellipse cover, $start-colour $start-position, $end-colour $end-position);
+    background: -ms-radial-gradient(center, ellipse cover, $start-colour $start-position, $end-colour $end-position);
+    background: radial-gradient(ellipse at center, $start-colour $start-position, $end-colour $end-position);
+}
+
+/// Test if `$value` is a valid direction
+/// @param {*} $value - Value to test
+/// @return {Bool}
+@function is-direction($value) {
+    $is-keyword: index((to top, to top right, to right top, to right, to bottom right, to right bottom, to bottom, to bottom left, to left bottom, to left, to left top, to top left), $value);
+    $is-angle: type-of($value)=='number' and index('deg' 'grad' 'turn' 'rad', unit($value));
+    @return $is-keyword or $is-angle;
+} /// Convert a direction to legacy syntax
+/// @param {Keyword | Angle} $value - Value to convert
+/// @require {function} is-direction
+/// @require {function} convert-angle
+/// @throw Cannot convert `#{$value}` to legacy syntax because it doesn't seem to be a direction.;
+@function legacy-direction($value) {
+    @if is-direction($value)==false {
+        @error "Cannot convert `#{$value}` to legacy syntax because it doesn't seem to be a direction.";
+    }
+    $conversion-map: ( to top: bottom, to top right: bottom left, to right top: left bottom, to right: left, to bottom right: top left, to right bottom: left top, to bottom: top, to bottom left: top right, to left bottom: right top, to left: right, to left top: right bottom, to top left: bottom right);
+    @if map-has-key($conversion-map, $value) {
+        @return map-get($conversion-map, $value);
+    }
+    @return 90deg - $value;
+}
+
+
+/*====
+transition
+======*/
+
+@mixin transition($args...) {
+    -webkit-transition: $args;
+    -moz-transition: $args;
+    -ms-transition: $args;
+    -o-transition: $args;
+    transition: $args;
+}
+
+
+/*====
+transform
+======*/
+
+// generic transform
+@mixin transform($transforms) {
+    -moz-transform: $transforms;
+    -o-transform: $transforms;
+    -ms-transform: $transforms;
+    -webkit-transform: $transforms;
+    transform: $transforms;
+}
+
+// rotate
+@mixin rotate ($deg) {
+    @include transform(rotate(#{$deg}deg));
+}
+
+// scale
+@mixin scale($scale) {
+    @include transform(scale($scale));
+}
+
+// translate
+@mixin translate ($x, $y) {
+    @include transform(translate($x, $y));
+}
+
+// skew
+@mixin skew ($x, $y) {
+    @include transform(skew(#{$x}deg, #{$y}deg));
+}
+
+//transform origin
+@mixin transform-origin ($origin) {
+    moz-transform-origin: $origin;
+    -o-transform-origin: $origin;
+    -ms-transform-origin: $origin;
+    -webkit-transform-origin: $origin;
+    transform-origin: $origin;
+}
+
+
+/*----
+flex
+-----*/
+
+@mixin flexbox() {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+@mixin grid($flexbox) {
+    @if $flexbox {
+        @include flexbox;
+    }
+    @else {
+        display: block;
+    }
+}
+
+@mixin justify-content($value: flex-start) {
+    @if $value==flex-start {
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+    }
+    @else if $value==flex-end {
+        -webkit-box-pack: end;
+        -ms-flex-pack: end;
+    }
+    @else if $value==space-between {
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+    }
+    @else if $value==space-around {
+        -ms-flex-pack: distribute;
+    }
+    @else if $value==center {
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+    }
+    @else {
+        -webkit-box-pack: $value;
+        -ms-flex-pack: $value;
+    }
+    -webkit-justify-content: $value;
+    -moz-justify-content: $value;
+    justify-content: $value;
+}
+
+@mixin align-items($value: stretch) {
+    @if $value==flex-start {
+        -webkit-box-align: start;
+        -ms-flex-align: start;
+    }
+    @else if $value==flex-end {
+        -webkit-box-align: end;
+        -ms-flex-align: end;
+    }
+    @else {
+        -webkit-box-align: $value;
+        -ms-flex-align: $value;
+    }
+    -webkit-align-items: $value;
+    -moz-align-items: $value;
+    align-items: $value;
+}
+
+@mixin flex-direction($value: row) {
+    @if $value==row-reverse {
+        -webkit-box-direction: reverse;
+        -webkit-box-orient: horizontal;
+    }
+    @else if $value==column {
+        -webkit-box-direction: normal;
+        -webkit-box-orient: vertical;
+    }
+    @else if $value==column-reverse {
+        -webkit-box-direction: reverse;
+        -webkit-box-orient: vertical;
+    }
+    @else {
+        -webkit-box-direction: normal;
+        -webkit-box-orient: horizontal;
+    }
+    -webkit-flex-direction: $value;
+    -moz-flex-direction: $value;
+    -ms-flex-direction: $value;
+    flex-direction: $value;
+}
+
+@mixin flex-wrap ($value) {
+    // IE 10
+    @if $value==nowrap {
+        -ms-flex-wrap: none;
+    }
+    @else {
+        -ms-flex-wrap: $value;
+    }
+    -webkit-flex-wrap: $value;
+    flex-wrap: $value;
+}
+
+
+/*-=====
+opasity
+=======*/
+
+@mixin Opacity($value) {
+    $IEValue: $value*100;
+    opacity: $value;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+$IEValue+")";
+    filter: alpha(opacity=$IEValue);
+}
+
+@mixin appearance ($value) {
+    -webkit-appearance: $value;
+    -moz-appearance: $value;
+    appearance: $value;
+}
+
+
+/*-=====
+react select
+=======*/
+
+@mixin text-shadow($x: 2px, $y: 2px, $blur: 5px, $color: rgba(0, 0, 0, .4)) {
+    text-shadow: $x $y $blur $color;
+}
+
+
+/*-=====
+mediaquery
+=======*/
+
+$phone: '(max-width: 480px)';
+$tablet-portrait: '(max-width: 767px)';
+$tablet-landscape: '(min-width: 768px) and (max-width: 979px)';
+$large-desktop: '(min-width: 1200px)';
+$non-retina: 'screen and (-webkit-max-device-pixel-ratio: 1)';
+$retina: '(min--moz-device-pixel-ratio: 1.5), 
+ (-o-min-device-pixel-ratio: 3/2),
+(-webkit-min-device-pixel-ratio: 1.5),
+(min-device-pixel-ratio: 1.5),
+(min-resolution: 144dpi),
+(min-resolution: 1.5dppx)';
+ @mixin respond-to($media) {
+    @media only screen and #{$media} {
+        @content;
+    }
+}
+
+
+/*-=====
+Animation
+=======*/
+
+@mixin animation($animate...) {
+    $max: length($animate);
+    $animations: '';
+    @for $i from 1 through $max {
+        $animations: #{$animations + nth($animate, $i)};
+        @if $i < $max {
+            $animations: #{$animations + ", "};
+        }
+    }
+    -webkit-animation: $animations;
+    -moz-animation: $animations;
+    -o-animation: $animations;
+    animation: $animations;
+}
+
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+
+$browser: null;

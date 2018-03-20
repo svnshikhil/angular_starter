@@ -1,0 +1,24 @@
+ table {
+     margin: 0;
+     thead {
+         margin: 0;
+         tr {
+             padding: 0;
+             th {
+                 vertical-align: middle;
+                 padding-left: 24px;
+                 padding-right: 24px;
+                 height: auto !important;
+             }
+         }
+     }
+     tbody {
+         margin: 0;
+         tr {
+             margin: 0;
+             td {
+                 vertical-align: middle;
+             }
+         }
+     }
+ }
